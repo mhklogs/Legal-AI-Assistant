@@ -17,9 +17,6 @@ from PIL import Image
 import pytesseract
 from fpdf import FPDF  # Library for creating PDFs
 
-# Set your API key
-os.environ['GROQ_API_KEY'] = os.environ.get('GROQ_API_KEY') or ""
-
 # Initialize the Groq client
 if not os.environ.get('GROQ_API_KEY'):
     raise RuntimeError(
@@ -162,8 +159,7 @@ def gradio_interface():
             return chat_history
 
         def save_and_update():
-            pdf_file = save_conversation()
-            return gr.update(visible=True), pdf_file
+            return gr.update(visible=True, value=save_conversation())
 
         generate_button.click(
             fn=update_chat,
@@ -180,7 +176,7 @@ def gradio_interface():
         save_button.click(
             fn=save_and_update,
             inputs=None,
-            outputs=[download_link, download_link]
+            outputs=[download_link]
         )
 
     demo.launch(share=True)
