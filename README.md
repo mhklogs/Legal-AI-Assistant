@@ -104,6 +104,12 @@ still contains a `!pip install` magic on line 10, so it is not valid plain
 Python. Either open it in Colab, or delete that line and run it as a normal
 script after installing dependencies yourself.
 
+## What changed (v3)
+
+- v1→v2: research-based market analysis + SDLC documentation (`documents/01–07`).
+- v2→v3: delivery roadmap with sprint plan and ceremonies
+  (`documents/08-roadmap.md`); this changelog. No source code changed.
+
 ## License
 
 MIT — use commercially, no attribution required.
