@@ -18,9 +18,14 @@ import pytesseract
 from fpdf import FPDF  # Library for creating PDFs
 
 # Set your API key
-os.environ['GROQ_API_KEY'] = "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"
+os.environ['GROQ_API_KEY'] = os.environ.get('GROQ_API_KEY') or ""
 
 # Initialize the Groq client
+if not os.environ.get('GROQ_API_KEY'):
+    raise RuntimeError(
+        "GROQ_API_KEY is not set. Get a key at https://console.groq.com/keys "
+        "then run: export GROQ_API_KEY='gsk_...'"
+    )
 client = Groq(api_key=os.environ['GROQ_API_KEY'])
 
 # Initialize the conversation history
